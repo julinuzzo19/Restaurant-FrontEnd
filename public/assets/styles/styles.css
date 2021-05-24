@@ -26,8 +26,14 @@
   width: 498px;
   height: 200px;
 }
-.precio-total
-{
-
+.precio-total {
   background-color: #cfcece;
+}
+.pedido-row {
+  border: 1px solid grey;
+}
+.subtitle
+{
+font-style: italic;
+
 }
