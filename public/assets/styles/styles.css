@@ -32,8 +32,16 @@
 .pedido-row {
   border: 1px solid grey;
 }
-.subtitle
-{
-font-style: italic;
-
+.subtitle {
+  font-style: italic;
+}
+.nav-item a {
+  font-size: larger;
+}
+.navbar-brand {
+  font-size: x-large;
+}
+.navbar-brand i {
+  margin-left: 20px;
+  font-size: larger;
 }

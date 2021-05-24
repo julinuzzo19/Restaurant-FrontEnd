@@ -16,16 +16,15 @@
   </head>
 
   <body>
+   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Restaurant Digital</a>
+        <a class="navbar-brand" href="#">Restaurant Digital<i class="fas fa-utensils"></i></a>
 
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="./index.html"
-                >Menú</a
-              >
+              <a class="nav-link active"  href="./index.html">Menú</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./views/comandas.html">Comandas</a>
@@ -34,95 +33,19 @@
         </div>
       </div>
     </nav>
-
+  </header>
     <div class="container">
       <h1 class="subtitle text-center">Nuestros platos</h1>
       <h3>Seleccione los platos a agregar a su pedido:</h3>
-<div class="mercaderia-cards">
-      <div class="row">
-        <div class="col-3">
-          <div class="card d-inline-block" data-bs-toggle="modal"
-          data-bs-target="#modal1">
-            <img
-              src="https://s1.eestatic.com/2021/01/22/ciencia/nutricion/553206479_171070440_1024x576.jpg"
-              height="170"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Jamon</h5>
-              <p class="card-text">Fetas de jamon enteras.</p>
-              <div class="col-6 d-inline-block">
-                <a href="#" class="btn btn-primary">Agregar</a>
-              </div>
-              <div class="col-5 d-inline-block text-end">
-                <h4 class="precio">$300</h4>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="card d-inline-block">
-            <img
-              src="https://unaricareceta.com/wp-content/uploads/2020/01/Webp.net-resizeimage-95.jpg"
-              height="170"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Ravioles</h5>
-              <p class="card-text">Ravioles rellenos de ricota con nuez.</p>
-              <a href="#" class="btn btn-primary">Agregar</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="card d-inline-block">
-            <img
-              src="https://unaricareceta.com/wp-content/uploads/2020/01/Webp.net-resizeimage-95.jpg"
-              height="170"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Ravioles</h5>
-              <p class="card-text">Ravioles rellenos de ricota con nuez.</p>
-              <a href="#" class="btn btn-primary">Agregar</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="card d-inline-block">
-            <img
-              src="https://unaricareceta.com/wp-content/uploads/2020/01/Webp.net-resizeimage-95.jpg"
-              height="170"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Ravioles</h5>
-              <p class="card-text">Ravioles rellenos de ricota con nuez.</p>
-              <a href="#" class="btn btn-primary">Agregar</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-3">
-          <div class="card d-inline-block">
-            <img
-              src="https://unaricareceta.com/wp-content/uploads/2020/01/Webp.net-resizeimage-95.jpg"
-              height="170"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Ravioles</h5>
-              <p class="card-text">Ravioles rellenos de ricota con nuez.</p>
-              <a href="#" class="btn btn-primary align-self-start">Agregar</a>
-            </div>
-          </div>
-        </div>
+    
+      <div class="row" id="listaMercaderias">
+      <!-- Listado de mercaderias -->
       </div>
-    </div><!-- fin listado de mercaderias -->
+
+      <div id="lista-modals">
+        <!--  -->
+      </div>
+
 
 
 <h3 class="mt-5 mb-5">Seleccionar tipo de envio:</h3>
@@ -221,55 +144,7 @@
 
 </div>
 </div>
-    <!-- MODAL  -->
-    <div class="container">
-      <div class="modal w-100" tabindex="-1" id="modal1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header p-0">
-              <img
-                id="img-modal"
-                src="https://s1.eestatic.com/2021/01/22/ciencia/nutricion/553206479_171070440_1024x576.jpg"
-                alt="jamon"
-              />
-            </div>
-            <div class="modal-body">
-              <h2 class="fw-bold">Jamon</h2>
-              <h5>$130</h5>
-
-              <h5>Ingredientes</h5>
-              Lorem prehenderit quae quaerat magni harum perferendi.
-              <p></p>
-              <h5>Preparación</h5>
-              Lorem prehenderit quae quaerat magni harum perferendi Lorem
-              prehenderit quae quaerat magni harum perferendi.
-            </div>
-            <div class="modal-footer d-block">
-              <div class="row justify-content-center ">
-                <div class="col-6"><button  data-bs-toggle="modal"
-                  data-bs-target="#modal1" class="btn btn-danger w-100">Cerrar</button></div>
-                
-                
-                <div class="col-6"><button class="btn btn-primary w-100">Agregar al pedido</button></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    <!--   <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#modal1"
-        id="input1"
-      >
-        Launch demo modal
-      </button> -->
-    </div>
-    </div>
-    <!-- fin MODAL  -->
+   
 
     <footer class="footer-item">
       <h5 class="footer-text text-center">
@@ -277,7 +152,7 @@
       </h5>
     </footer>
   </body>
-  <script src="./js/menu.js"></script>
+  <script type="module" src="./js/menu.js"></script>
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
