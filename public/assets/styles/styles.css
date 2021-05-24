@@ -1,33 +1,33 @@
-.nav-item
-{
-margin-left: 290px;
+.nav-item {
+  margin-left: 290px;
 }
-.footer-item
-{
-background: #212529;
-color: white;
+.footer-item {
+  background: #212529;
+  color: white;
 
-height: 50px;
-display: block;
-
+  height: 50px;
+  display: block;
 }
-.subtitle
-{
 
-
+.body {
+  background-color: #d6d6d6;
 }
-.body
-{
-
-background-color: #d6d6d6;
-
+.card-text {
+  height: 50px;
 }
-.card-text
-{
-height: 50px;
+.card {
+  width: 230px;
 }
-.card
-{
-width: 230px;
+.card:hover {
+  border: 2px solid grey;
+}
 
+#img-modal {
+  width: 498px;
+  height: 200px;
+}
+.precio-total
+{
+
+  background-color: #cfcece;
 }
