@@ -12,9 +12,6 @@ const mostrarMercaderias = (mercaderias) => {
   console.log(mercaderias);
   const place = document.getElementById("listaMercaderias");
   for (const mercaderia of mercaderias) {
-    
-    
-    
     const element = document.createElement("div");
     element.className = "d-inline-block col-3 mt-2";
 
@@ -37,16 +34,14 @@ const mostrarMercaderias = (mercaderias) => {
 
     place.appendChild(element);
     crearModal(mercaderia);
-  
   }
 };
 
- const crearModal=(mercaderia)=>{
-    
-    const place = document.getElementById("lista-modals");
-    const element = document.createElement("div");
-    
-    element.innerHTML=`
+const crearModal = (mercaderia) => {
+  const place = document.getElementById("lista-modals");
+  const element = document.createElement("div");
+
+  element.innerHTML = `
     <div class="modal w-100" tabindex="-1" id="modal${mercaderia.mercaderiaId}">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -64,7 +59,7 @@ const mostrarMercaderias = (mercaderias) => {
             ${mercaderia.ingredientes}
             <p></p>
             <h5>Preparación</h5>
-            ${mercaderia.preparacion}
+            ${mercaderia.preparación}
           </div>
           <div class="modal-footer d-block">
             <div class="row justify-content-center ">
@@ -78,7 +73,8 @@ const mostrarMercaderias = (mercaderias) => {
           </div>
         </div>
       </div>
-  `
+  `;
 
   place.appendChild(element);
-}
+};
+
