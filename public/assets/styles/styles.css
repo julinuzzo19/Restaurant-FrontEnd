@@ -13,22 +13,27 @@
   background-color: #d6d6d6;
 }
 .card-text {
-  height: 50px;
+  height: 30px;
 }
 .card {
   width: 230px;
 }
 .card:hover {
-  border: 2px solid grey;
+  border: 1px solid grey;
+}
+.card-footer {
+  height: 55px;
+  padding-top: 0px;
+}
+.btn-footer-card {
+  margin-bottom: 22px;
 }
 
 #img-modal {
   width: 498px;
   height: 200px;
 }
-.precio-total {
-  background-color: #cfcece;
-}
+
 .pedido-row {
   border: 1px solid grey;
 }
@@ -44,4 +49,19 @@
 .navbar-brand i {
   margin-left: 20px;
   font-size: larger;
+}
+.card-title {
+  margin-top: -10px;
+}
+.card-text {
+  font-weight: 500;
+}
+.cantItem {
+  width: 35px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.pedido-row-cant {
+  margin-top: 33px;
 }
