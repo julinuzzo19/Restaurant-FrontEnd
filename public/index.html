@@ -48,18 +48,20 @@
 
 
 
+
 <h3 class="mt-5 mb-5">Seleccionar tipo de envio:</h3>
 <form>
 <div class="row">
 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-  <input type="radio" class="btn-check " name="btnradio" id="btnradio1" autocomplete="off" value="Pedidos Ya" checked>
+  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" value=2>
+  <label class="btn btn-outline-success bg-gradient" for="btnradio3">Delivery</label>
+  
+  <input type="radio" class="btn-check " name="btnradio" id="btnradio1" autocomplete="off" value=3 checked>
   <label class="btn btn-outline-success bg-gradient" for="btnradio1">Pedidos Ya</label>
 
-  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" value="Salon">
+  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" value=1>
   <label class="btn btn-outline-success bg-gradient" for="btnradio2">Salon</label>
 
-  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" value="Delivery">
-  <label class="btn btn-outline-success bg-gradient" for="btnradio3">Delivery</label>
 </div>
 </div>
 </div>
@@ -70,7 +72,7 @@
 <div class="row">
 
 <div class="col-6 h-100">
-<h5>Pedido:</h5>
+<h5 id="pedido-subtitle">Pedido</h5>
 
 <div id="ListadoPedido"></div>
 </div><!-- Columna pedidos -->
@@ -100,10 +102,13 @@
     <div  class="col-6"><h4 id="total"><!-- Precio total --></h4></div>
       <div class="col-4 mb-2">
 
-      <input class="btn btn-success bg-gradient w-75" type="submit" value="Comprar"></input>
+      <input class="btn btn-success bg-gradient w-75" 
+       id="btn-compra" type="submit" value="Comprar"></input>
+     
     </div>
      
   </div>
+
 </div>
 </form>
 

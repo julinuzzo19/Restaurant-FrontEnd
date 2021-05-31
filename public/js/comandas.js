@@ -1,5 +1,6 @@
-import { listarComandas } from "../services/comandaService.js";
+import { listarComandas, obtenerFecha } from "../services/comandaService.js";
 
 window.onload = () => {
+  obtenerFecha();
   listarComandas();
 };

@@ -1,12 +1,19 @@
-import { URL_API_MERCADERIA } from "../js/constants.js";
+import { URL_API_MERCADERIA, URL_API_COMANDA } from "../js/constants.js";
 
 var precioActual = 0;
+var pedidoListado = [];
+
+const actualizarTotal = async (precioMercaderia) => {
+  precioActual = precioActual + precioMercaderia;
+  const element = document.getElementById("total");
+
+  element.innerHTML = `Precio total: $${precioActual}`;
+};
 
 const getMercaderiaById = async (mercaderiaId) => {
   return await fetch(URL_API_MERCADERIA + "/" + mercaderiaId)
     .then((response) => response.json())
     .then((res) => {
-      console.log(res);
       return res;
     });
 };
@@ -37,7 +44,7 @@ const mostrarMercaderias = (mercaderias) => {
               </div>
               <div class="card-footer">
               <div class="col-6 d-inline-block ">
-                <a name="btn-mercaderia-card" id="${mercaderia.mercaderiaId}" class="btn btn-success bg-gradient btn-footer-card">Agregar</a>
+                <a name="btn-mercaderia-card" id="btn-card-${mercaderia.mercaderiaId}" class="btn btn-success bg-gradient btn-footer-card">Agregar</a>
               
               </div>
               <div class="col-5 d-inline-block text-end div-footer-cant">
@@ -85,7 +92,7 @@ const crearModal = (mercaderia) => {
                 data-bs-target="#modal${mercaderia.mercaderiaId}" class="btn btn-danger w-100">Cerrar</button></div>
               
               
-              <div class="col-6"><button class="btn btn-success bg-gradient w-100">Agregar al pedido</button></div>
+              <div class="col-6"><button name="btn-mercaderia-card" id="btn-add-modal-${mercaderia.mercaderiaId}"  class="btn btn-success bg-gradient w-100">Agregar al pedido</button></div>
               </div>
             </div>
           </div>
@@ -99,7 +106,7 @@ const crearModal = (mercaderia) => {
 const listarMercaderiaPedida = (mercaderia, cantidad) => {
   const place = document.getElementById("ListadoPedido");
   const element = document.createElement("div");
-  element.id = `pedido-row-${mercaderia.mercaderiaId}`;
+  element.id = `${mercaderia.mercaderiaId}`;
   element.className = "row pedido-row border border-dark mb-2";
   element.innerHTML = `
         <div class="col-3 p-0">
@@ -120,19 +127,43 @@ const listarMercaderiaPedida = (mercaderia, cantidad) => {
     </div>
     
     <div class="col-3">
-      <button name="remove-item-pedido" id=${
+      <button name="remove-item-pedido" id="btn-${
         mercaderia.mercaderiaId
-      } type="button" class="btn btn-danger mt-4 w-50"><i class="fas fa-trash"></i></button>
+      }" type="button" class="btn btn-danger mt-4 w-50"><i class="fas fa-trash"></i></button>
     </div>
   `;
   place.appendChild(element);
   actualizarTotal(mercaderia.precio * cantidad);
 };
 
+const crearComanda = (envio, mercaderia) => {
+  let formaEntrega = envio.tipo;
+
+  let bodyPedido = {
+    mercaderia,
+    formaEntrega,
+  };
+  let bodyPedidoJson = JSON.stringify(bodyPedido);
+
+  fetch(URL_API_COMANDA, {
+    method: "post",
+    headers: { "Content-Type": "application/json;charset=UTF-8" },
+    body: bodyPedidoJson,
+  })
+    .then((response) => response.json)
+    .then((data) => {
+      //hacer algo cuando se confirma pedido
+    })
+    .catch((err) => {
+      console.log("Error: ", err);
+    });
+};
+
 document.addEventListener("click", async (e) => {
   e.stopImmediatePropagation();
   if (e.target.name == "btn-mercaderia-card") {
-    let itemId = e.target.id;
+    let itemId = e.target.id.charAt(e.target.id.length - 1);
+
     let cantidad = document.getElementById(`input-cant-${itemId}`).value;
 
     let mercaderia = await getMercaderiaById(itemId);
@@ -140,25 +171,54 @@ document.addEventListener("click", async (e) => {
   }
 
   if (e.target.name == "remove-item-pedido") {
-    
-    let itemId=e.target.id;
-    const place = document.getElementById("ListadoPedido");
-    let itemPedido = document.getElementById(`pedido-row-${itemId}`);
+    let btnId = e.target.id;
+    let itemId = btnId.substring(4, btnId.lenght);
+
+    let itemPedido = document.getElementById(`${itemId}`);
+    let place = itemPedido.parentNode;
 
     let mercaderia = await getMercaderiaById(itemId);
 
-    //obtener cantidad de mercaderia
     let cantidad = document.getElementById(`input-cant-${itemId}`).value;
 
-    actualizarTotal(-mercaderia.precio*cantidad);
-
     place.removeChild(itemPedido);
+
+    actualizarTotal(-mercaderia.precio * cantidad);
   }
 });
 
-const actualizarTotal = async (precioMercaderia) => {
-  precioActual = precioActual + precioMercaderia;
-  const element = document.getElementById("total");
+window.onsubmit = (event) => {
+  event.preventDefault();
+  let direccion = document.getElementById("direccion").value;
+  let partido = document.getElementById("partido").value;
+  let telefono = document.getElementById("telefono").value;
+  let tipoEnvio;
 
-  element.innerHTML = `Precio total: $${precioActual}`;
+  let btnradio1 = document.getElementById("btnradio1");
+  let btnradio2 = document.getElementById("btnradio2");
+  let btnradio3 = document.getElementById("btnradio3");
+  if (btnradio1.checked) tipoEnvio = parseInt(btnradio1.value);
+  if (btnradio2.checked) tipoEnvio = parseInt(btnradio2.value);
+  if (btnradio3.checked) tipoEnvio = parseInt(btnradio3.value);
+
+  let envio = {
+    direccion: direccion,
+    partido: partido,
+    telefono: telefono,
+    tipo: tipoEnvio,
+  };
+
+  const place = document.getElementById("ListadoPedido");
+
+  let listaPedidos = [];
+
+  place.childNodes.forEach((element) => {
+    let cantidad = document.getElementById(`input-cant-${element.id}`).value;
+
+    for (let index = 0; index < cantidad; index++) {
+      listaPedidos.push(parseInt(element.id));
+    }
+  });
+
+  crearComanda(envio, listaPedidos);
 };
