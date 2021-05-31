@@ -4,6 +4,7 @@
 .footer-item {
   background: #212529;
   color: white;
+  position: relative !important;
 
   height: 50px;
   display: block;
@@ -39,7 +40,9 @@
 }
 .subtitle {
   font-style: italic;
+  padding: 0 !important;
 }
+
 .nav-item a {
   font-size: larger;
 }
@@ -72,6 +75,9 @@
   background: #212529 !important;
   color: white !important;
 }
+.accordion-button:focus {
+  border: 5px solid black !important;
+}
 .accordion-button:after {
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
 }
@@ -80,4 +86,21 @@
   margin-right: 20px !important;
   width: 60%;
 
+}
+.accordion-body
+{
+background: #d6d6d6;
+
+}
+
+/* Comanda page styles */
+.fecha-text
+{
+margin-left: 10px;
+
+}
+.comanda-title
+{
+margin-left: 42px;
+  
 }

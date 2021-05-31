@@ -32,10 +32,10 @@ const mostrarComandas = (comandas) => {
   for (let item of comandas) {
     contador++;
     let element = document.createElement("div");
-    element.className = "row ";
+    element.className = "row align-content-center";
 
     element.innerHTML = `
-    <div class="accordion-item w-50 mb-2 p-0">
+    <div class="accordion-item w-75 mb-2 p-0">
     <h2 class="accordion-header">
       <button
         class="accordion-button collapsed"
@@ -45,22 +45,17 @@ const mostrarComandas = (comandas) => {
        
         <div class="col-4">
           <div class="row text-center">
-            <h5>Comanda</h5>
-            <div class="row row-comanda "><span>#${contador}</span></div>
+            <div class="row row-comanda "><span class="fw-bold">#${contador}</span></div>
           </div>
         </div>
-
         <div class="col-4">
-          <div class="row text-center">
-            <h5>Forma de entrega</h5>
-            <div class="row text-center"><span>${item.formaEntrega}</span></div>
+          <div class="row text-center">     
+            <div class="row text-center"><span class="fw-bold">${item.formaEntrega}</span></div>
           </div>
         </div>
-
         <div class="col-4">
-          <div class="row text-center">
-            <h5>Precio total</h5>
-            <div class="row text-center"><span>$${item.precioTotal}</span></div>
+          <div class="row text-center">        
+            <div class="row"><span class="fw-bold">$${item.precioTotal}</span></div>
           </div>
         
         </div>
@@ -72,8 +67,7 @@ const mostrarComandas = (comandas) => {
       data-bs-parent="#accordionComanda"
     >
       <div class="accordion-body">
-        <ul id="listaMercaderia-${item.comandaId}">
-        
+        <ul id="listaMercaderia-${item.comandaId}"> 
         </ul>
       </div>
     </div>
@@ -83,14 +77,39 @@ const mostrarComandas = (comandas) => {
 
     place.appendChild(element);
 
-    for (let mercaderia of item.nombreMercaderia) {
+    let mercaderiaSinRepeticion = [];
+    item.nombreMercaderia.forEach((item) => {
+      if (!mercaderiaSinRepeticion.includes(item)) {
+        mercaderiaSinRepeticion.push(item);
+      }
+    });
+
+    for (let mercaderia of mercaderiaSinRepeticion) {
       const place2 = document.getElementById(
         `listaMercaderia-${item.comandaId}`
       );
       let element2 = document.createElement("li");
+      element2.className = "fw-bold";
+
+     let listaContadorRepetidos= item.nombreMercaderia.reduce(
+        (contador, actual) => (
+          contador[actual] ? (contador[actual] += 1) : (contador[actual] = 1),
+          contador
+        ),
+        {}
+      );
+
+          let cantidad=listaContadorRepetidos[mercaderia]
+
 
       place2.append(element2);
-      element2.innerHTML = `${mercaderia}`;
+      element2.innerHTML = `
+      <div class="row">
+      <div class="col-3">${mercaderia}</div>
+      <div class="col-3">x ${cantidad}</div>
+      </div>
+      
+      `;
     }
   }
 };

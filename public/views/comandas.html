@@ -42,17 +42,24 @@
       </nav>
     </header>
 
-    <div class="row">
-      <h1 class="text-center subtitle">Listado de comandas del día</h1>
-    </div>
-    <div class="row">
-      <h2 class="subtitle m-2">
-        Fecha: <span id="fechaActual"><!-- Fecha actual --></span>
-      </h2>
+    <div class="container-fluid">
+      <div class="row">
+        <h1 class="text-center subtitle">Listado de comandas del día</h1>
+      </div>
+      <div class="row">
+        <h2 class="subtitle fecha-text">
+          Fecha: <span id="fechaActual"><!-- Fecha actual --></span>
+        </h2>
+      </div>
     </div>
 
-    <div class="container mt-3" id="listaComandas">
-      <!-- Listar Comandas -->
+    <div class="container-fluid mt-3" id="listaComandas">
+      <div class="row text-center w-75 border-3 border-dark">
+        <div class="col-4"><h5 class="comanda-title">Comanda</h5></div>
+        <div class="col-4"><h5>Forma de entrega</h5></div>
+        <div class="col-4"><h5>Precio total</h5></div>
+      </div>
+
       <div class="accordion" id="accordionComanda"></div>
       <!-- Fin accordion -->
     </div>
