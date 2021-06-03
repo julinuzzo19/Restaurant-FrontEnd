@@ -1,13 +1,13 @@
 .nav-item {
-  margin-left: 290px;
+  margin-left: 200px;
 }
 .footer-item {
   background: #212529;
   color: white;
   position: relative !important;
-
   height: 50px;
   display: block;
+  margin-top: 100px;
 }
 
 .body {
@@ -34,10 +34,6 @@
   width: 498px;
   height: 200px;
 }
-
-.pedido-row {
-  border: 1px solid grey;
-}
 .subtitle {
   font-style: italic;
   padding: 0 !important;
@@ -45,6 +41,13 @@
 
 .nav-item a {
   font-size: larger;
+}
+.fa-shopping-cart {
+  font-size: xx-large;
+}
+.fa-shopping-cart:before
+{
+  margin-left: 240px !important;
 }
 .navbar-brand {
   font-size: x-large;
@@ -59,14 +62,28 @@
 .card-text {
   font-weight: 500;
 }
+label[name="btn-tipo"] {
+  width: 145px !important;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 39px;
+}
 .cantItem {
   width: 35px;
   height: 25px;
   margin-right: 10px;
 }
-
+/* 
 .pedido-row-cant {
   margin-top: 33px;
+} */
+
+.pedido-row {
+}
+
+.nombre-pedido {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 /* Accordion Styles */
@@ -74,6 +91,7 @@
 .accordion-button {
   background: #212529 !important;
   color: white !important;
+  height: 42px;
 }
 .accordion-button:focus {
   border: 5px solid black !important;
@@ -82,25 +100,23 @@
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
 }
 .accordion-item {
-  margin-left: 12px;
+  margin-left: 120px;
   margin-right: 20px !important;
   width: 60%;
-
 }
-.accordion-body
-{
-background: #d6d6d6;
-
+.accordion-body {
+  background: #d6d6d6;
 }
 
 /* Comanda page styles */
-.fecha-text
-{
-margin-left: 10px;
-
+.comanda-contador {
+  margin-left: 40px;
 }
-.comanda-title
-{
-margin-left: 42px;
-  
+.comanda-forma-entrega {
+  margin-left: 15px;
+}
+
+.comanda-precio {
+  margin-left: 120px !important;
+  text-align: start;
 }

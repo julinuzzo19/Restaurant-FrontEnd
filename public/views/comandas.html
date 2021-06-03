@@ -42,7 +42,7 @@
       </nav>
     </header>
 
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
         <h1 class="text-center subtitle">Listado de comandas del día</h1>
       </div>
@@ -53,15 +53,15 @@
       </div>
     </div>
 
-    <div class="container-fluid mt-3" id="listaComandas">
-      <div class="row text-center w-75 border-3 border-dark">
-        <div class="col-4"><h5 class="comanda-title">Comanda</h5></div>
-        <div class="col-4"><h5>Forma de entrega</h5></div>
-        <div class="col-4"><h5>Precio total</h5></div>
+    <div class="container mt-3" id="listaComandas">
+      <div class="row text-end">
+        <div class="col-3 comanda-contador"><h5>Comanda</h5></div>
+        <div class="col-3 comanda-forma-entrega"><h5>Forma de entrega</h5></div>
+        <div class="col-3 comanda-precio"><h5>Precio total</h5></div>
       </div>
-
-      <div class="accordion" id="accordionComanda"></div>
-      <!-- Fin accordion -->
+      <div class="row w-75 text-center">
+        <div class="accordion" id="accordionComanda"></div>
+      </div>
     </div>
     <!-- Fin listado comandas -->
 

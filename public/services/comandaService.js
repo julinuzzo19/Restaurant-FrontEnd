@@ -29,10 +29,18 @@ const mostrarComandas = (comandas) => {
   console.log(comandas);
   let contador = 0;
   const place = document.getElementById("listaComandas");
+  if (comandas.length == 0) {
+    let element = document.createElement("div");
+    element.className = "text-center mt-3";
+    element.innerHTML = `<h3 class="mb-5">No hay comandas en el dia de la fecha </h3>
+    <i class="far fa-frown mb-5 fa-6x"></i>`;
+    place.appendChild(element);
+  }
+
   for (let item of comandas) {
     contador++;
     let element = document.createElement("div");
-    element.className = "row align-content-center";
+    element.className = "row text-center";
 
     element.innerHTML = `
     <div class="accordion-item w-75 mb-2 p-0">
@@ -66,7 +74,7 @@ const mostrarComandas = (comandas) => {
       class="accordion-collapse collapse"
       data-bs-parent="#accordionComanda"
     >
-      <div class="accordion-body">
+      <div class="accordion-body p-1">
         <ul id="listaMercaderia-${item.comandaId}"> 
         </ul>
       </div>
@@ -91,7 +99,7 @@ const mostrarComandas = (comandas) => {
       let element2 = document.createElement("li");
       element2.className = "fw-bold";
 
-     let listaContadorRepetidos= item.nombreMercaderia.reduce(
+      let listaContadorRepetidos = item.nombreMercaderia.reduce(
         (contador, actual) => (
           contador[actual] ? (contador[actual] += 1) : (contador[actual] = 1),
           contador
@@ -99,8 +107,7 @@ const mostrarComandas = (comandas) => {
         {}
       );
 
-          let cantidad=listaContadorRepetidos[mercaderia]
-
+      let cantidad = listaContadorRepetidos[mercaderia];
 
       place2.append(element2);
       element2.innerHTML = `

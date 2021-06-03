@@ -30,7 +30,7 @@ const mostrarMercaderias = (mercaderias) => {
   const place = document.getElementById("listaMercaderias");
   for (const mercaderia of mercaderias) {
     const element = document.createElement("div");
-    element.className = "d-inline-block col-3 mt-2";
+    element.className = "d-inline-block col-3 mt-2 ";
 
     element.innerHTML = `    
           <div class="card d-inline-block">
@@ -105,32 +105,45 @@ const crearModal = (mercaderia) => {
 
 const listarMercaderiaPedida = (mercaderia, cantidad) => {
   const place = document.getElementById("ListadoPedido");
+
   const element = document.createElement("div");
   element.id = `${mercaderia.mercaderiaId}`;
   element.className = "row pedido-row border border-dark mb-2";
   element.innerHTML = `
-        <div class="col-3 p-0">
-      <img class="border border-dark" src="${
-        mercaderia.imagen
-      }" height="100px" width="150px" alt="">
-        </div>
-    <div class="col-3 ">
-      <h3>${mercaderia.nombre}</h3>
-      <h6>${mercaderia.tipoMercaderia}</h6>
-      <h6 class="fw-bold" >$${mercaderia.precio * cantidad}</h6> 
-    </div>
-    <div class="col-3">
-    <p class="pedido-row-cant" id="cant-${
-      mercaderia.mercaderiaId
-    }" >Cantidad: ${cantidad}</p>
+     <div class="col-3 p-0">
+     <img class="border border-dark" src="${
+       mercaderia.imagen
+     }" height="91px" width="80px" >
+     </div> 
+     
+     <div class="col-9 p-0">
+   
+     <div class="row">
+     <span class="nombre-pedido">${
+       mercaderia.nombre
+     }</span class="nombre-pedido">
+     </div> 
+     <div class="row">
     
-    </div>
-    
-    <div class="col-3">
-      <button name="remove-item-pedido" id="btn-${
-        mercaderia.mercaderiaId
-      }" type="button" class="btn btn-danger mt-4 w-50"><i class="fas fa-trash"></i></button>
-    </div>
+    <div class="col-4">
+     <h6>${mercaderia.tipoMercaderia}</h6>
+     <h6 class="fw-bold" >$${mercaderia.precio * cantidad}</h6> 
+     </div>
+     <div class="col-4">
+     <p class="pedido-row-cant text-center" id="cant-${
+       mercaderia.mercaderiaId
+     }" >Cantidad: ${cantidad}</p>
+     </div>
+
+
+     <div class="col-4">
+     <button name="remove-item-pedido" id="btn-${
+       mercaderia.mercaderiaId
+     }" type="button" class="btn btn-danger "><i class="fas fa-trash"></i></button>
+
+      </div>     
+      </div> 
+      </div>   
   `;
   place.appendChild(element);
   actualizarTotal(mercaderia.precio * cantidad);
