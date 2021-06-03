@@ -51,11 +51,10 @@
         <div class="row">
 
           <div class="col-6 h-100">
-            <h5 id="pedido-subtitle">Pedido</h5>
+            
           </div><!-- Columna pedidos -->
-         
-          <div id="ListadoPedido"></div>        
-         
+          <div id="ListadoPedido">           
+          </div>
 
         </div>
       </div>
@@ -120,14 +119,36 @@
   </div>
   <!-- canvasoff -->
 
-  <div class="container-fluid">
+  <div class="container">
+    <h1 class="subtitle text-center mb-5">Nuestros platos</h1>
+    <div class="row mb-3">
+      <div class="col-6">
+        <h4>Seleccione los platos a agregar a su pedido:</h4>
+      </div>
+      <div class="col-6 text-end">
+
+
+<select class="form-select" id="tipoMercaderiaSelect">
+  <option selected value="0">Filtrar por tipo de mercaderia</option>
+  <option value="1">Entrada</option>
+  <option value="2">Minutas</option>
+  <option value="3">Pastas</option>
+  <option value="4">Parrilla</option>
+  <option value="5">Pizzas</option>
+  <option value="6">Sandwich</option>
+  <option value="7">Ensalada</option>
+  <option value="8">Bebidas</option>
+  <option value="9">Cerveza artesanal</option>
+  <option value="10">Postres</option>
+</select>
+
+      </div>
+  </div>
+    
     <div class="row">
     
-      
-    <div class="col-10">
-      <h1 class="subtitle text-center">Nuestros platos</h1>
-    <h3>Seleccione los platos a agregar a su pedido:</h3>
-
+    <div class="col-12">
+     
     <div class="row" id="listaMercaderias">
       <!-- Listado de mercaderias -->
     </div>

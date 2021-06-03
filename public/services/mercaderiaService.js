@@ -1,7 +1,6 @@
 import { URL_API_MERCADERIA, URL_API_COMANDA } from "../js/constants.js";
 
 var precioActual = 0;
-var pedidoListado = [];
 
 const actualizarTotal = async (precioMercaderia) => {
   precioActual = precioActual + precioMercaderia;
@@ -18,8 +17,15 @@ const getMercaderiaById = async (mercaderiaId) => {
     });
 };
 
-export const listarMercaderias = () => {
-  fetch(URL_API_MERCADERIA)
+export const listarMercaderias = (tipoMercaderiaId) => {
+  let urlGetMercaderias = URL_API_MERCADERIA;
+
+  if (tipoMercaderiaId != null || tipoMercaderiaId != undefined) {
+    urlGetMercaderias =
+      urlGetMercaderias + `?TipoMercaderiaId=${tipoMercaderiaId}`;
+  }
+
+  fetch(urlGetMercaderias)
     .then((response) => response.json())
     .then((response) => {
       mostrarMercaderias(response);
@@ -28,6 +34,9 @@ export const listarMercaderias = () => {
 
 const mostrarMercaderias = (mercaderias) => {
   const place = document.getElementById("listaMercaderias");
+console.log(mercaderias);
+  place.innerHTML = ``;
+
   for (const mercaderia of mercaderias) {
     const element = document.createElement("div");
     element.className = "d-inline-block col-3 mt-2 ";
@@ -111,9 +120,7 @@ const listarMercaderiaPedida = (mercaderia, cantidad) => {
   element.className = "row pedido-row border border-dark mb-2";
   element.innerHTML = `
      <div class="col-3 p-0">
-     <img class="border border-dark" src="${
-       mercaderia.imagen
-     }" height="91px" width="80px" >
+     <img  src="${mercaderia.imagen}" height="91px" width="80px" >
      </div> 
      
      <div class="col-9 p-0">
@@ -234,4 +241,14 @@ window.onsubmit = (event) => {
   });
 
   crearComanda(envio, listaPedidos);
+};
+
+const inputFilter = document.getElementById("tipoMercaderiaSelect");
+
+inputFilter.oninput = () => {
+  if (inputFilter.value != 0) {
+    listarMercaderias(inputFilter.value);
+  } else {
+    listarMercaderias();
+  }
 };

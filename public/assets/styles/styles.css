@@ -38,6 +38,9 @@
   font-style: italic;
   padding: 0 !important;
 }
+#tipoMercaderiaSelect {
+  font-size: large;
+}
 
 .nav-item a {
   font-size: larger;
@@ -45,8 +48,7 @@
 .fa-shopping-cart {
   font-size: xx-large;
 }
-.fa-shopping-cart:before
-{
+.fa-shopping-cart:before {
   margin-left: 240px !important;
 }
 .navbar-brand {
