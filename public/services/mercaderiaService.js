@@ -175,11 +175,15 @@ const crearComanda = (envio, mercaderia) => {
       <div class="card text-center p-0 my-2  w-100">
         <div class="card-header bg-transparent text-success border-0">
           <i class="far fa-check-circle display-4 d-block"></i>
-          <h5 class="card-title text-success display-4 d-block">Compra exitosa!</h5>
+          <h5 class="card-title text-success display-4 d-block">Compra exitosa!</h5>    
         </div>
-        <div class="card-body">
+        <div class="card-body fw-bold">
           <p class="card-text lead">La compra se ha realizado con éxito.</p>
-          <a  href="javascript:location.reload()" class="btn btn-primary  mt-5">Volver al menú </a>
+          <p class="mt-5">Direccion de envio: ${envio.direccion}</p>
+          <p>Partido: ${envio.partido}</p>
+          <p>Telefono: ${envio.telefono}</p>
+          <p>Forma de envio: ${envio.nombreTipo}</p>
+          <a  href="javascript:location.reload()" class="btn btn-primary  mt-2">Volver al menú </a>
         </div>
       </div>`;
       }
@@ -191,7 +195,7 @@ const crearComanda = (envio, mercaderia) => {
       </div>
       <div class="card-body">
         <p class="card-text lead">La compra no se ha realizado.</p>
-        <a  href="javascript:location.reload()" class="btn btn-danger mt-5">Volver al menú </a>
+        <a  href="javascript:location.reload()" class="btn btn-danger mt-3">Volver al menú </a>
       </div>
     </div>`;
       }
@@ -235,19 +239,30 @@ window.onsubmit = (event) => {
   let partido = document.getElementById('partido').value;
   let telefono = document.getElementById('telefono').value;
   let tipoEnvio;
+  let nombreTipoEnvio;
 
   let btnradio1 = document.getElementById('btnradio1');
   let btnradio2 = document.getElementById('btnradio2');
   let btnradio3 = document.getElementById('btnradio3');
-  if (btnradio1.checked) tipoEnvio = parseInt(btnradio1.value);
-  if (btnradio2.checked) tipoEnvio = parseInt(btnradio2.value);
-  if (btnradio3.checked) tipoEnvio = parseInt(btnradio3.value);
+  if (btnradio1.checked) {
+    tipoEnvio = parseInt(btnradio1.value);
+    nombreTipoEnvio = btnradio3.getAttribute('name');
+  }
+  if (btnradio2.checked) {
+    tipoEnvio = parseInt(btnradio2.value);
+    nombreTipoEnvio = btnradio3.getAttribute('name');
+  }
+  if (btnradio3.checked) {
+    tipoEnvio = parseInt(btnradio3.value);
+    nombreTipoEnvio = btnradio3.getAttribute('name');
+  }
 
   let envio = {
     direccion: direccion,
     partido: partido,
     telefono: telefono,
-    tipo: tipoEnvio
+    tipo: tipoEnvio,
+    nombreTipo: nombreTipoEnvio
   };
 
   const place = document.getElementById('ListadoPedido');
