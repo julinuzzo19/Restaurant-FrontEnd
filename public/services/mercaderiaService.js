@@ -167,12 +167,37 @@ const crearComanda = (envio, mercaderia) => {
     headers: {'Content-Type': 'application/json;charset=UTF-8'},
     body: bodyPedidoJson
   })
-    .then((response) => response.json)
-    .then((data) => {
-      //hacer algo cuando se confirma pedido
+    .then((response) => {
+      response.json();
+      let formCanvasOff = document.getElementById('offcanvas-body');
+      if (response.status == 201) {
+        formCanvasOff.innerHTML = ` 
+      <div class="card text-center p-0 my-2  w-100">
+        <div class="card-header bg-transparent text-success border-0">
+          <i class="far fa-check-circle display-4 d-block"></i>
+          <h5 class="card-title text-success display-4 d-block">Compra exitosa!</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text lead">La compra se ha realizado con éxito.</p>
+          <a  href="javascript:location.reload()" class="btn btn-primary  mt-5">Volver al menú </a>
+        </div>
+      </div>`;
+      }
+      if (response.status == 400) {
+        formCanvasOff.innerHTML = ` <div class="card text-center p-0 my-2 w-100">
+      <div class="card-header bg-transparent text-danger border-0">
+      <i class="fas fa-exclamation-triangle fa-3x"></i>
+        <h5 class="card-title text-danger display-4 d-block">Compra Fallida!</h5>
+      </div>
+      <div class="card-body">
+        <p class="card-text lead">La compra no se ha realizado.</p>
+        <a  href="javascript:location.reload()" class="btn btn-danger mt-5">Volver al menú </a>
+      </div>
+    </div>`;
+      }
     })
     .catch((err) => {
-      console.log('Error: ', err);
+      console.log(err);
     });
 };
 
