@@ -1,16 +1,16 @@
-import { URL_API_MERCADERIA, URL_API_COMANDA } from "../js/constants.js";
+import {URL_API_MERCADERIA, URL_API_COMANDA} from '../js/constants.js';
 
 var precioActual = 0;
 
 const actualizarTotal = async (precioMercaderia) => {
   precioActual = precioActual + precioMercaderia;
-  const element = document.getElementById("total");
+  const element = document.getElementById('total');
 
   element.innerHTML = `Precio total: $${precioActual}`;
 };
 
 const getMercaderiaById = async (mercaderiaId) => {
-  return await fetch(URL_API_MERCADERIA + "/" + mercaderiaId)
+  return await fetch(URL_API_MERCADERIA + '/' + mercaderiaId)
     .then((response) => response.json())
     .then((res) => {
       return res;
@@ -21,8 +21,7 @@ export const listarMercaderias = (tipoMercaderiaId) => {
   let urlGetMercaderias = URL_API_MERCADERIA;
 
   if (tipoMercaderiaId != null || tipoMercaderiaId != undefined) {
-    urlGetMercaderias =
-      urlGetMercaderias + `?TipoMercaderiaId=${tipoMercaderiaId}`;
+    urlGetMercaderias = urlGetMercaderias + `?TipoMercaderiaId=${tipoMercaderiaId}`;
   }
 
   fetch(urlGetMercaderias)
@@ -33,13 +32,13 @@ export const listarMercaderias = (tipoMercaderiaId) => {
 };
 
 const mostrarMercaderias = (mercaderias) => {
-  const place = document.getElementById("listaMercaderias");
-console.log(mercaderias);
+  const place = document.getElementById('listaMercaderias');
+
   place.innerHTML = ``;
 
   for (const mercaderia of mercaderias) {
-    const element = document.createElement("div");
-    element.className = "d-inline-block col-3 mt-2 ";
+    const element = document.createElement('div');
+    element.className = 'd-inline-block col-3 mt-2 ';
 
     element.innerHTML = `    
           <div class="card d-inline-block">
@@ -48,7 +47,7 @@ console.log(mercaderias);
             <div class="card-body" data-bs-toggle="modal"
             data-bs-target="#modal${mercaderia.mercaderiaId}">
               <h4 class="card-title">${mercaderia.nombre}</h4>
-              <p  class="card-text mt-2">${mercaderia.tipoMercaderia}</p>
+              <p class="card-text mt-2">${mercaderia.tipoMercaderia}</p>
               <h4 class="precio">$${mercaderia.precio}</h4>
               </div>
               <div class="card-footer">
@@ -72,8 +71,8 @@ console.log(mercaderias);
 };
 
 const crearModal = (mercaderia) => {
-  const place = document.getElementById("lista-modals");
-  const element = document.createElement("div");
+  const place = document.getElementById('lista-modals');
+  const element = document.createElement('div');
 
   element.innerHTML = `
     <div class="modal w-100" tabindex="-1" id="modal${mercaderia.mercaderiaId}">
@@ -113,11 +112,11 @@ const crearModal = (mercaderia) => {
 };
 
 const listarMercaderiaPedida = (mercaderia, cantidad) => {
-  const place = document.getElementById("ListadoPedido");
+  const place = document.getElementById('ListadoPedido');
 
-  const element = document.createElement("div");
+  const element = document.createElement('div');
   element.id = `${mercaderia.mercaderiaId}`;
-  element.className = "row pedido-row border border-dark mb-2";
+  element.className = 'row pedido-row border border-dark mb-2';
   element.innerHTML = `
      <div class="col-3 p-0">
      <img  src="${mercaderia.imagen}" height="91px" width="80px" >
@@ -126,9 +125,7 @@ const listarMercaderiaPedida = (mercaderia, cantidad) => {
      <div class="col-9 p-0">
    
      <div class="row">
-     <span class="nombre-pedido">${
-       mercaderia.nombre
-     }</span class="nombre-pedido">
+     <span class="nombre-pedido">${mercaderia.nombre}</span class="nombre-pedido">
      </div> 
      <div class="row">
     
@@ -161,27 +158,27 @@ const crearComanda = (envio, mercaderia) => {
 
   let bodyPedido = {
     mercaderia,
-    formaEntrega,
+    formaEntrega
   };
   let bodyPedidoJson = JSON.stringify(bodyPedido);
 
   fetch(URL_API_COMANDA, {
-    method: "post",
-    headers: { "Content-Type": "application/json;charset=UTF-8" },
-    body: bodyPedidoJson,
+    method: 'post',
+    headers: {'Content-Type': 'application/json;charset=UTF-8'},
+    body: bodyPedidoJson
   })
     .then((response) => response.json)
     .then((data) => {
       //hacer algo cuando se confirma pedido
     })
     .catch((err) => {
-      console.log("Error: ", err);
+      console.log('Error: ', err);
     });
 };
 
-document.addEventListener("click", async (e) => {
+document.addEventListener('click', async (e) => {
   e.stopImmediatePropagation();
-  if (e.target.name == "btn-mercaderia-card") {
+  if (e.target.name == 'btn-mercaderia-card') {
     let itemId = e.target.id.charAt(e.target.id.length - 1);
 
     let cantidad = document.getElementById(`input-cant-${itemId}`).value;
@@ -190,7 +187,7 @@ document.addEventListener("click", async (e) => {
     listarMercaderiaPedida(mercaderia, cantidad);
   }
 
-  if (e.target.name == "remove-item-pedido") {
+  if (e.target.name == 'remove-item-pedido') {
     let btnId = e.target.id;
     let itemId = btnId.substring(4, btnId.lenght);
 
@@ -209,14 +206,14 @@ document.addEventListener("click", async (e) => {
 
 window.onsubmit = (event) => {
   event.preventDefault();
-  let direccion = document.getElementById("direccion").value;
-  let partido = document.getElementById("partido").value;
-  let telefono = document.getElementById("telefono").value;
+  let direccion = document.getElementById('direccion').value;
+  let partido = document.getElementById('partido').value;
+  let telefono = document.getElementById('telefono').value;
   let tipoEnvio;
 
-  let btnradio1 = document.getElementById("btnradio1");
-  let btnradio2 = document.getElementById("btnradio2");
-  let btnradio3 = document.getElementById("btnradio3");
+  let btnradio1 = document.getElementById('btnradio1');
+  let btnradio2 = document.getElementById('btnradio2');
+  let btnradio3 = document.getElementById('btnradio3');
   if (btnradio1.checked) tipoEnvio = parseInt(btnradio1.value);
   if (btnradio2.checked) tipoEnvio = parseInt(btnradio2.value);
   if (btnradio3.checked) tipoEnvio = parseInt(btnradio3.value);
@@ -225,10 +222,10 @@ window.onsubmit = (event) => {
     direccion: direccion,
     partido: partido,
     telefono: telefono,
-    tipo: tipoEnvio,
+    tipo: tipoEnvio
   };
 
-  const place = document.getElementById("ListadoPedido");
+  const place = document.getElementById('ListadoPedido');
 
   let listaPedidos = [];
 
@@ -243,7 +240,7 @@ window.onsubmit = (event) => {
   crearComanda(envio, listaPedidos);
 };
 
-const inputFilter = document.getElementById("tipoMercaderiaSelect");
+const inputFilter = document.getElementById('tipoMercaderiaSelect');
 
 inputFilter.oninput = () => {
   if (inputFilter.value != 0) {

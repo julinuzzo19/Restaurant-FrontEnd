@@ -1,173 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/styles/styles.css" />
+    <title>Restaurant Digital</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
-  <link rel="stylesheet" href="./assets/styles/styles.css" />
-  <title>Restaurant Digital</title>
-</head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"
+            >Restaurant Digital<i class="fas fa-utensils"></i
+          ></a>
 
-<body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Restaurant Digital<i class="fas fa-utensils"></i></a>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" href="./index.html">Menú</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./views/comandas.html">Comandas</a>
-            </li>
-            <li class="nav-item">
-              <a id="btn-carrito" class="nav-link" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
-                aria-controls="offcanvasScrolling"><i class="fas fa-shopping-cart"></i></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
-    id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasScrollingLabel">
-        Carrito de compras 
-      </h5>
-      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-
-        
-     <div class="container">
-        <div class="row">
-
-          <div class="col-6 h-100">
-            
-          </div><!-- Columna pedidos -->
-          <div id="ListadoPedido">           
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" href="./index.html">Menú</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./views/comandas.html">Comandas</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  id="btn-carrito"
+                  class="nav-link"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasScrolling"
+                  aria-controls="offcanvasScrolling"
+                  ><i class="fas fa-shopping-cart"></i
+                ></a>
+              </li>
+            </ul>
           </div>
-
         </div>
+      </nav>
+    </header>
+
+    <div
+      class="offcanvas offcanvas-end"
+      data-bs-scroll="true"
+      data-bs-backdrop="false"
+      tabindex="-1"
+      id="offcanvasScrolling"
+      aria-labelledby="offcanvasScrollingLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasScrollingLabel">
+          Carrito de compras
+        </h5>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
       </div>
+      <div class="offcanvas-body">
         <div class="container">
-        <h3 class="mt-2">Tipo de envio:</h3>
-        <form>
           <div class="row">
-            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-              <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" value=2>
-              <label class="btn btn-outline-success bg-gradient" for="btnradio3">Delivery</label>
+            <div class="col-6 h-100"> </div
+            ><!-- Columna pedidos -->
+            <div id="ListadoPedido"></div>
+          </div>
+        </div>
+        <div class="container">
+          <h3 class="mt-2">Tipo de envio:</h3>
+          <form>
+            <div class="row">
+              <div
+                class="btn-group"
+                role="group"
+                aria-label="Basic radio toggle button group"
+              >
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="btnradio"
+                  id="btnradio3"
+                  value="2"
+                />
+                <label class="btn btn-outline-success bg-gradient" for="btnradio3"
+                  >Delivery</label
+                >
 
-              <input type="radio" class="btn-check " name="btnradio" id="btnradio1" autocomplete="off" value=3 checked>
-              <label class="btn btn-outline-success bg-gradient" for="btnradio1">Pedidos Ya</label>
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="btnradio"
+                  id="btnradio1"
+                  value="3"
+                  checked
+                />
+                <label class="btn btn-outline-success bg-gradient" for="btnradio1"
+                  >Pedidos Ya</label
+                >
 
-              <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" value=1>
-              <label class="btn btn-outline-success bg-gradient" for="btnradio2">Salon</label>
-
+                <input
+                  type="radio"
+                  class="btn-check"
+                  name="btnradio"
+                  id="btnradio2"
+                  value="1"
+                />
+                <label class="btn btn-outline-success bg-gradient" for="btnradio2"
+                  >Salon</label
+                >
+              </div>
             </div>
+
+            <div class="row">
+              <div class="col-12">
+                <h4 class="mb-4 mt-4">Datos de la dirección de envio:</h4>
+
+                <div class="form">
+                  <div class="col">
+                    <input
+                      type="text"
+                      id="direccion"
+                      class="form-control"
+                      placeholder="Direccion"
+                    />
+                  </div>
+                  <div class="col mt-2">
+                    <input
+                      type="text"
+                      id="partido"
+                      class="form-control"
+                      placeholder="Partido"
+                    />
+                  </div>
+                  <div class="col mt-2">
+                    <input
+                      type="text"
+                      id="telefono"
+                      class="form-control"
+                      placeholder="Telefono de contacto"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="row mt-3 justify-content-end">
+                <div class="col-8">
+                  <h4 id="total"><!-- Precio total --></h4>
+                </div>
+                <div class="col-4 mb-2">
+                  <input
+                    class="btn btn-success bg-gradient w-100"
+                    id="btn-compra"
+                    type="submit"
+                    value="Comprar"
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h1 class="subtitle text-center mb-5">Nuestros platos</h1>
+      <div class="row mb-3">
+        <div class="col-6">
+          <h4>Seleccione los platos a agregar a su pedido:</h4>
+        </div>
+        <div class="col-6 text-end">
+          <select class="form-select" id="tipoMercaderiaSelect">
+            <option selected value="0">Filtrar por tipo de mercaderia</option>
+            <option value="1">Entrada</option>
+            <option value="2">Minutas</option>
+            <option value="3">Pastas</option>
+            <option value="4">Parrilla</option>
+            <option value="5">Pizzas</option>
+            <option value="6">Sandwich</option>
+            <option value="7">Ensalada</option>
+            <option value="8">Bebidas</option>
+            <option value="9">Cerveza artesanal</option>
+            <option value="10">Postres</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="row" id="listaMercaderias">
+            <!-- Listado de mercaderias -->
           </div>
 
-
-          <div class="row">
-            <div class="col-12">
-
-              <h4 class="mb-4 mt-4">Datos de la dirección de envio:</h4>
-
-              <div class="form">
-                <div class="col">
-                  <input type="text" id="direccion" class="form-control" placeholder="Direccion">
-                </div>
-                <div class="col mt-2">
-                  <input type="text" id="partido" class="form-control" placeholder="Partido">
-                </div>
-                <div class="col mt-2">
-                  <input type="text" id="telefono" class="form-control" placeholder="Telefono de contacto">
-                </div>
-
-              </div>
-
-            </div>
+          <div id="lista-modals">
+            <!--  -->
           </div>
-          <div class="row">
-            <div class="row mt-3 justify-content-end ">
-              <div class="col-8">
-                <h4 id="total">
-                  <!-- Precio total -->
-                </h4>
-              </div>
-              <div class="col-4 mb-2">
-
-                <input class="btn btn-success bg-gradient w-100" id="btn-compra" type="submit" value="Comprar"></input>
-              </div>
-        </form>
+        </div>
       </div>
-
     </div>
-
-
-  </div>
-
-  </div>
-  </div>
-  <!-- canvasoff -->
-
-  <div class="container">
-    <h1 class="subtitle text-center mb-5">Nuestros platos</h1>
-    <div class="row mb-3">
-      <div class="col-6">
-        <h4>Seleccione los platos a agregar a su pedido:</h4>
-      </div>
-      <div class="col-6 text-end">
-
-
-<select class="form-select" id="tipoMercaderiaSelect">
-  <option selected value="0">Filtrar por tipo de mercaderia</option>
-  <option value="1">Entrada</option>
-  <option value="2">Minutas</option>
-  <option value="3">Pastas</option>
-  <option value="4">Parrilla</option>
-  <option value="5">Pizzas</option>
-  <option value="6">Sandwich</option>
-  <option value="7">Ensalada</option>
-  <option value="8">Bebidas</option>
-  <option value="9">Cerveza artesanal</option>
-  <option value="10">Postres</option>
-</select>
-
-      </div>
-  </div>
-    
-    <div class="row">
-    
-    <div class="col-12">
-     
-    <div class="row" id="listaMercaderias">
-      <!-- Listado de mercaderias -->
-    </div>
-
-    <div id="lista-modals">
-      <!--  -->
-    </div>
-    </div>
-  </div>  
-</div>
-  <footer class="footer-item">
-    <h5 class="footer-text text-center">
-      Restaurante Digital Todos los derechos reservados &copy; 2021
-    </h5>
-  </footer>
-</body>
-<script type="module" src="./js/menu.js"></script>
-<script type="module" src="./services/mercaderiaService.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-
+    <footer class="footer-item">
+      <h5 class="footer-text text-center">
+        Restaurante Digital Todos los derechos reservados &copy; 2021
+      </h5>
+    </footer>
+    <script type="module" src="./js/menu.js"></script>
+    <script type="module" src="./services/mercaderiaService.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
