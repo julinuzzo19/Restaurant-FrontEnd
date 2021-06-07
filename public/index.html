@@ -31,7 +31,7 @@
               <li class="nav-item">
                 <a class="nav-link active" href="./index.html">Menú</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item nav-item-comanda">
                 <a class="nav-link" href="./views/comandas.html">Comandas</a>
               </li>
               <li class="nav-item">
@@ -41,7 +41,7 @@
                   data-bs-toggle="offcanvas"
                   data-bs-target="#offcanvasScrolling"
                   aria-controls="offcanvasScrolling"
-                  ><i class="fas fa-shopping-cart"></i
+                  ><i id="nav-item-carrito" class="fas fa-shopping-cart"></i
                 ></a>
               </li>
             </ul>
@@ -154,20 +154,19 @@
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="row mt-3 justify-content-end">
-                <div class="col-8">
-                  <h4 id="total"><!-- Precio total --></h4>
-                </div>
-                <div class="col-4 mb-2">
-                  <input
-                    class="btn btn-success bg-gradient w-100"
-                    id="btn-compra"
-                    type="submit"
-                    value="Comprar"
-                  />
-                </div>
+            <div class="row mt-3 justify-content-center">
+              <div class="col-8">
+                <h4 id="total"><!-- Precio total --></h4>
               </div>
+            </div>
+
+            <div class="row mt-3 justify-content-center">
+              <button class="btn btn-dark fw-bold" id="btn-compra" type="submit">
+                Comprar<i
+                  id="btn-carrito-icon"
+                  class="fas fa-shopping-cart fa-lg"
+                ></i
+              ></button>
             </div>
           </form>
         </div>
@@ -182,7 +181,7 @@
         </div>
         <div class="col-6 text-end">
           <select class="form-select" id="tipoMercaderiaSelect">
-            <option selected value="0">Filtrar por tipo de mercaderia</option>
+            <option selected value="0">Filtrar por tipo</option>
             <option value="1">Entrada</option>
             <option value="2">Minutas</option>
             <option value="3">Pastas</option>

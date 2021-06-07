@@ -36,6 +36,12 @@ const mostrarMercaderias = (mercaderias) => {
 
   place.innerHTML = ``;
 
+  if (mercaderias.length == 0) {
+    place.innerHTML = `
+    <h2 class="text-center mt-5 mb-5 h-100">No hay platos del tipo seleccionado.</h2>
+    <i class="far fa-frown mb-5 mt-2 fa-6x text-center"></i>
+    `;
+  }
   for (const mercaderia of mercaderias) {
     const element = document.createElement('div');
     element.className = 'd-inline-block col-3 mt-2 ';
@@ -266,10 +272,8 @@ window.onsubmit = (event) => {
     nombreTipo: nombreTipoEnvio
   };
 
-  const place = document.getElementById('ListadoPedido');
-
   let listaPedidos = [];
-
+  const place = document.getElementById('ListadoPedido');
   place.childNodes.forEach((element) => {
     let cantidad = document.getElementById(`input-cant-${element.id}`).value;
 

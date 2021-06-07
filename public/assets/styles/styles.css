@@ -11,7 +11,7 @@ nav {
   position: relative !important;
   height: 50px;
   display: block;
-  margin-top: 100px;
+  margin-top: 86px;
 }
 
 .body {
@@ -52,11 +52,16 @@ nav {
 .nav-item a {
   font-size: larger;
 }
-.fa-shopping-cart {
+
+#nav-item-carrito {
   font-size: xx-large;
 }
-.fa-shopping-cart:before {
-  margin-left: 240px !important;
+#btn-compra {
+  width: 170px !important;
+}
+
+.nav-item-comanda {
+  margin-right: 245px;
 }
 .navbar-brand {
   font-size: x-large;
@@ -121,4 +126,7 @@ label[name='btn-tipo'] {
 .comanda-precio {
   margin-left: 120px !important;
   text-align: start;
+}
+.container-comanda {
+  min-height: 221px !important;
 }

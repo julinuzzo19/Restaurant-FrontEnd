@@ -1,4 +1,4 @@
-import { URL_API_COMANDA } from "../js/constants.js";
+import {URL_API_COMANDA} from '../js/constants.js';
 
 export const obtenerFecha = () => {};
 
@@ -6,18 +6,18 @@ export const listarComandas = () => {
   let fechaActual = new Date();
   let fechaDia =
     fechaActual.getDate() +
-    "/" +
+    '/' +
     (fechaActual.getMonth() + 1) +
-    "/" +
+    '/' +
     fechaActual.getFullYear();
   let fechaQuery =
     fechaActual.getFullYear() +
-    "/" +
+    '/' +
     (fechaActual.getMonth() + 1) +
-    "/" +
+    '/' +
     fechaActual.getDate();
 
-  document.getElementById("fechaActual").innerText = fechaDia;
+  document.getElementById('fechaActual').innerText = fechaDia;
   fetch(URL_API_COMANDA + `?Fecha=${fechaQuery}`)
     .then((response) => response.json())
     .then((response) => {
@@ -28,19 +28,19 @@ export const listarComandas = () => {
 const mostrarComandas = (comandas) => {
   console.log(comandas);
   let contador = 0;
-  const place = document.getElementById("listaComandas");
+  const place = document.getElementById('listaComandas');
   if (comandas.length == 0) {
-    let element = document.createElement("div");
-    element.className = "text-center mt-3";
-    element.innerHTML = `<h3 class="mb-5">No hay comandas en el dia de la fecha </h3>
+    let element = document.createElement('div');
+    element.className = 'text-center mt-3';
+    element.innerHTML = `<h3 class="mb-5 mt-5">No hay comandas en el dia de la fecha </h3>
     <i class="far fa-frown mb-5 fa-6x"></i>`;
     place.appendChild(element);
   }
 
   for (let item of comandas) {
     contador++;
-    let element = document.createElement("div");
-    element.className = "row text-center";
+    let element = document.createElement('div');
+    element.className = 'row text-center';
 
     element.innerHTML = `
     <div class="accordion-item w-75 mb-2 p-0">
@@ -93,11 +93,9 @@ const mostrarComandas = (comandas) => {
     });
 
     for (let mercaderia of mercaderiaSinRepeticion) {
-      const place2 = document.getElementById(
-        `listaMercaderia-${item.comandaId}`
-      );
-      let element2 = document.createElement("li");
-      element2.className = "fw-bold";
+      const place2 = document.getElementById(`listaMercaderia-${item.comandaId}`);
+      let element2 = document.createElement('li');
+      element2.className = 'fw-bold';
 
       let listaContadorRepetidos = item.nombreMercaderia.reduce(
         (contador, actual) => (
