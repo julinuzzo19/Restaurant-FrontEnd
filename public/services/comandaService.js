@@ -46,7 +46,7 @@ const mostrarComandas = (comandas) => {
     <div class="accordion-item w-75 mb-2 p-0">
     <h2 class="accordion-header">
       <button
-        class="accordion-button collapsed"
+        class="accordion-button collapsed text-white bg-dark"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#collapse-${item.comandaId}">

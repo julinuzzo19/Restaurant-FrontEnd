@@ -56,7 +56,7 @@ const mostrarMercaderias = (mercaderias) => {
               <p class="card-text mt-2">${mercaderia.tipoMercaderia}</p>
               <h4 class="precio">$${mercaderia.precio}</h4>
               </div>
-              <div class="card-footer">
+              <div class="card-footer pt-0">
               <div class="col-6 d-inline-block ">
                 <a name="btn-mercaderia-card" id="btn-card-${mercaderia.mercaderiaId}" class="btn btn-success bg-gradient btn-footer-card">Agregar</a>
               

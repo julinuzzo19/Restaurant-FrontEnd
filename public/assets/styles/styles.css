@@ -1,21 +1,12 @@
 nav {
   height: 66px;
-  padding: 0;
 }
 .nav-item {
   margin-left: 200px;
 }
 .footer-item {
-  background: #212529;
-  color: white;
-  position: relative !important;
   height: 50px;
-  display: block;
   margin-top: 86px;
-}
-
-.body {
-  background-color: #d6d6d6;
 }
 .card-text {
   height: 30px;
@@ -28,7 +19,6 @@ nav {
 }
 .card-footer {
   height: 55px;
-  padding-top: 0px;
 }
 .btn-footer-card {
   margin-bottom: 22px;
@@ -41,22 +31,9 @@ nav {
   width: 430px;
   margin-left: 50px;
 }
-.subtitle {
-  font-style: italic;
-  padding: 0 !important;
-}
-#tipoMercaderiaSelect {
-  font-size: large;
-}
-
-.nav-item a {
-  font-size: larger;
-}
-
 #btn-compra {
   width: 200px !important;
 }
-
 .nav-item-comanda {
   margin-right: 245px;
 }
@@ -66,6 +43,17 @@ nav {
 .navbar-brand i {
   margin-left: 20px;
   font-size: larger;
+}
+#nav-item-carrito {
+  margin-left: -23px !important;
+}
+#btn-carrito-icon {
+  margin-left: 15px !important;
+}
+#tipoMercaderiaSelect {
+  width: 200px;
+  float: right;
+  margin-right: 33px !important;
 }
 .card-title {
   margin-top: -10px;
@@ -84,7 +72,6 @@ label[name='btn-tipo'] {
   height: 25px;
   margin-right: 10px;
 }
-
 .nombre-pedido {
   font-size: 18px;
   font-weight: bold;
@@ -93,8 +80,6 @@ label[name='btn-tipo'] {
 /* Accordion Styles */
 
 .accordion-button {
-  background: #212529 !important;
-  color: white !important;
   height: 42px;
 }
 .accordion-button:focus {
@@ -119,10 +104,8 @@ label[name='btn-tipo'] {
 .comanda-forma-entrega {
   margin-left: 15px;
 }
-
 .comanda-precio {
   margin-left: 120px !important;
-  text-align: start;
 }
 .container-comanda {
   min-height: 221px !important;
