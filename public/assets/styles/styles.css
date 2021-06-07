@@ -1,3 +1,7 @@
+nav {
+  height: 66px;
+  padding: 0;
+}
 .nav-item {
   margin-left: 200px;
 }
@@ -29,10 +33,13 @@
 .btn-footer-card {
   margin-bottom: 22px;
 }
-
 #img-modal {
-  width: 498px;
+  width: 430px;
   height: 200px;
+}
+.modal-content {
+  width: 430px;
+  margin-left: 50px;
 }
 .subtitle {
   font-style: italic;
@@ -64,7 +71,7 @@
 .card-text {
   font-weight: 500;
 }
-label[name="btn-tipo"] {
+label[name='btn-tipo'] {
   width: 145px !important;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -74,13 +81,6 @@ label[name="btn-tipo"] {
   width: 35px;
   height: 25px;
   margin-right: 10px;
-}
-/* 
-.pedido-row-cant {
-  margin-top: 33px;
-} */
-
-.pedido-row {
 }
 
 .nombre-pedido {

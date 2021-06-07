@@ -75,7 +75,7 @@ const crearModal = (mercaderia) => {
   const element = document.createElement('div');
 
   element.innerHTML = `
-    <div class="modal w-100" tabindex="-1" id="modal${mercaderia.mercaderiaId}">
+    <div class="modal" tabindex="-1" id="modal${mercaderia.mercaderiaId}">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header p-0">
@@ -91,7 +91,7 @@ const crearModal = (mercaderia) => {
             <h5>Ingredientes</h5>
             ${mercaderia.ingredientes}
       
-            <h5>Preparación</h5>
+            <h5 class="mt-2">Preparación</h5>
             ${mercaderia.preparacion}
           </div>
           <div class="modal-footer d-block">
@@ -241,20 +241,21 @@ window.onsubmit = (event) => {
   let tipoEnvio;
   let nombreTipoEnvio;
 
-  let btnradio1 = document.getElementById('btnradio1');
-  let btnradio2 = document.getElementById('btnradio2');
-  let btnradio3 = document.getElementById('btnradio3');
+  let btnradio1 = document.getElementById('Delivery');
+  let btnradio2 = document.getElementById('Salon');
+  let btnradio3 = document.getElementById('Pedidos Ya');
+
   if (btnradio1.checked) {
     tipoEnvio = parseInt(btnradio1.value);
-    nombreTipoEnvio = btnradio3.getAttribute('name');
+    nombreTipoEnvio = btnradio1.id;
   }
   if (btnradio2.checked) {
     tipoEnvio = parseInt(btnradio2.value);
-    nombreTipoEnvio = btnradio3.getAttribute('name');
+    nombreTipoEnvio = btnradio2.id;
   }
   if (btnradio3.checked) {
     tipoEnvio = parseInt(btnradio3.value);
-    nombreTipoEnvio = btnradio3.getAttribute('name');
+    nombreTipoEnvio = btnradio3.id;
   }
 
   let envio = {
