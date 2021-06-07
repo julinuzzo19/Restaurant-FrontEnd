@@ -53,11 +53,8 @@ nav {
   font-size: larger;
 }
 
-#nav-item-carrito {
-  font-size: xx-large;
-}
 #btn-compra {
-  width: 170px !important;
+  width: 200px !important;
 }
 
 .nav-item-comanda {
