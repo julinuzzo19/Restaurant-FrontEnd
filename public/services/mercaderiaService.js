@@ -21,8 +21,10 @@ export const listarMercaderias = (tipoMercaderiaId) => {
   let urlGetMercaderias = URL_API_MERCADERIA;
 
   if (tipoMercaderiaId != null || tipoMercaderiaId != undefined) {
-    urlGetMercaderias = urlGetMercaderias + `?TipoMercaderiaId=${tipoMercaderiaId}`;
+    urlGetMercaderias = urlGetMercaderias + `?Tipo=${tipoMercaderiaId}`;
   }
+
+  console.log(urlGetMercaderias);
 
   fetch(urlGetMercaderias)
     .then((response) => response.json())
@@ -63,7 +65,7 @@ const mostrarMercaderias = (mercaderias) => {
               </div>
               <div class="col-5 d-inline-block text-end div-footer-cant">
               <label class="fw-light label-input-card">Cantidad</label>
-              <input class="cantItem" type="number" value=1 id="input-cant-${mercaderia.mercaderiaId}">
+              <input class="cantItem" type="number" min="1" max="50" value=1 id="input-cant-${mercaderia.mercaderiaId}">
                 
               </div>
               </div>
@@ -298,6 +300,7 @@ window.onsubmit = (event) => {
 const inputFilter = document.getElementById('tipoMercaderiaSelect');
 
 inputFilter.oninput = () => {
+  console.log(inputFilter);
   if (inputFilter.value != 0) {
     listarMercaderias(inputFilter.value);
   } else {
