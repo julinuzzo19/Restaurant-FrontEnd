@@ -1,6 +1,6 @@
 import {URL_API_MERCADERIA, URL_API_COMANDA} from '../js/constants.js';
 
-var precioActual = 0;
+let precioActual = 0;
 
 const actualizarTotal = async (precioMercaderia) => {
   precioActual = precioActual + precioMercaderia;
@@ -23,8 +23,6 @@ export const listarMercaderias = (tipoMercaderiaId) => {
   if (tipoMercaderiaId != null || tipoMercaderiaId != undefined) {
     urlGetMercaderias = urlGetMercaderias + `?Tipo=${tipoMercaderiaId}`;
   }
-
-  console.log(urlGetMercaderias);
 
   fetch(urlGetMercaderias)
     .then((response) => response.json())
@@ -300,7 +298,6 @@ window.onsubmit = (event) => {
 const inputFilter = document.getElementById('tipoMercaderiaSelect');
 
 inputFilter.oninput = () => {
-  console.log(inputFilter);
   if (inputFilter.value != 0) {
     listarMercaderias(inputFilter.value);
   } else {

@@ -26,7 +26,6 @@ export const listarComandas = () => {
 };
 
 const mostrarComandas = (comandas) => {
-  console.log(comandas);
   let contador = 0;
   const place = document.getElementById('listaComandas');
   if (comandas.length == 0) {
