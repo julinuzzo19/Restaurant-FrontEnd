@@ -46,10 +46,14 @@ const mostrarMercaderias = (mercaderias) => {
     const element = document.createElement('div');
     element.className = 'd-inline-block col-3 mt-2 ';
 
+    if (mercaderia.imagen == '') {
+      mercaderia.imagen = '../assets/images/defaultImage.jpg';
+    }
+
     element.innerHTML = `    
           <div class="card d-inline-block">
             <img src="${mercaderia.imagen}" height="120" class="card-img-top" data-bs-toggle="modal"
-            data-bs-target="#modal${mercaderia.mercaderiaId}"/>
+            data-bs-target="#modal${mercaderia.mercaderiaId}" alt="${mercaderia.nombre}" />
             <div class="card-body" data-bs-toggle="modal"
             data-bs-target="#modal${mercaderia.mercaderiaId}">
               <h4 class="card-title">${mercaderia.nombre}</h4>
@@ -88,6 +92,7 @@ const crearModal = (mercaderia) => {
             <img
               id="img-modal"
               src="${mercaderia.imagen}"
+              alt="${mercaderia.nombre}"
             />
           </div>
           <div class="modal-body">
@@ -123,9 +128,16 @@ const listarMercaderiaPedida = (mercaderia, cantidad) => {
   const element = document.createElement('div');
   element.id = `${mercaderia.mercaderiaId}`;
   element.className = 'row pedido-row border border-dark mb-2';
+
+  if (mercaderia.imagen == '') {
+    mercaderia.imagen = '../assets/images/defaultImage.jpg';
+  }
+
   element.innerHTML = `
      <div class="col-3 p-0">
-     <img  src="${mercaderia.imagen}" height="91px" width="80px" >
+     <img alt="${mercaderia.nombre}" src="${
+    mercaderia.imagen
+  }" height="91px" width="80px" >
      </div> 
      
      <div class="col-9 p-0">
