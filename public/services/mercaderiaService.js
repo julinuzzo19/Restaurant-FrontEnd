@@ -118,22 +118,30 @@ const crearModal = (mercaderia) => {
   place.appendChild(element);
 };
 
-const listarMercaderiaPedida = (mercaderia, cantidad) => {
+const agregarAPedido = (mercaderia, cantidad) => {
+  SaveToLocalStorage(mercaderia);
+  
+};
+
+export const listarPedido = () => {
   const place = document.getElementById('ListadoPedido');
 
-  const element = document.createElement('div');
-  element.id = `${mercaderia.mercaderiaId}`;
-  element.className = 'row pedido-row border border-dark mb-2';
+  let listaPedido = getMercaderiaLocalStorage();
 
-  if (mercaderia.imagen == '') {
-    mercaderia.imagen = '../assets/images/defaultImage.jpg';
-  }
+  for (const mercaderia of listaPedido) {
+    const element = document.createElement('div');
+    element.id = `${mercaderia.mercaderiaId}`;
+    element.className = 'row pedido-row border border-dark mb-2';
 
-  element.innerHTML = `
+    if (mercaderia.imagen == '') {
+      mercaderia.imagen = '../assets/images/defaultImage.jpg';
+    }
+
+    element.innerHTML = `
      <div class="col-3 p-0">
      <img alt="${mercaderia.nombre}" src="${
-    mercaderia.imagen
-  }" height="91px" width="80px" >
+      mercaderia.imagen
+    }" height="91px" width="80px" >
      </div> 
      
      <div class="col-9 p-0">
@@ -145,12 +153,12 @@ const listarMercaderiaPedida = (mercaderia, cantidad) => {
     
     <div class="col-4">
      <h6>${mercaderia.tipoMercaderia}</h6>
-     <h6 class="fw-bold" >$${mercaderia.precio * cantidad}</h6> 
+     <h6 class="fw-bold" >$${mercaderia.precio }</h6> 
      </div>
      <div class="col-4">
      <p class="pedido-row-cant text-center" id="cant-${
        mercaderia.mercaderiaId
-     }" >Cantidad: ${cantidad}</p>
+     }" >Cantidad: </p>
      </div>
 
      <div class="col-4">
@@ -162,8 +170,9 @@ const listarMercaderiaPedida = (mercaderia, cantidad) => {
       </div> 
       </div>   
   `;
-  place.appendChild(element);
-  actualizarTotal(mercaderia.precio * cantidad);
+    place.appendChild(element);
+    actualizarTotal(mercaderia.precio );
+  }
 };
 
 const crearComanda = (envio, mercaderia) => {
@@ -236,7 +245,7 @@ document.addEventListener('click', async (e) => {
     let cantidad = document.getElementById(`input-cant-${itemId}`).value;
 
     let mercaderia = await getMercaderiaById(itemId);
-    listarMercaderiaPedida(mercaderia, cantidad);
+    agregarAPedido(mercaderia, cantidad);
   }
 
   if (e.target.name == 'remove-item-pedido') {
@@ -310,4 +319,25 @@ inputFilter.oninput = () => {
   } else {
     listarMercaderias();
   }
+};
+
+const SaveToLocalStorage = (mercaderia) => {
+  let mercaderiaLS = getMercaderiaLocalStorage();
+
+  mercaderiaLS.push(mercaderia);
+
+  localStorage.setItem('mercaderia', JSON.stringify(mercaderiaLS));
+  listarPedido();
+};
+
+const getMercaderiaLocalStorage = () => {
+  let mercaderiaLS;
+
+  if (localStorage.getItem('mercaderia') === null) {
+    mercaderiaLS = [];
+  } else {
+    mercaderiaLS = JSON.parse(localStorage.getItem('mercaderia'));
+  }
+
+  return mercaderiaLS;
 };
