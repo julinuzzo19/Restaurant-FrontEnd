@@ -62,18 +62,15 @@ const mostrarMercaderias = (mercaderias) => {
               </div>
               <div class="card-footer pt-0">
               <div class="col-6 d-inline-block ">
-                <a name="btn-mercaderia-card" id="btn-card-${mercaderia.mercaderiaId}" class="btn btn-success bg-gradient btn-footer-card">Agregar</a>
-              
+                <a name="btn-mercaderia-card" id="btn-card-${mercaderia.mercaderiaId}" class="btn btn-success bg-gradient btn-footer-card">Agregar</a>           
               </div>
               <div class="col-5 d-inline-block text-end div-footer-cant">
               <label class="fw-light label-input-card">Cantidad</label>
               <input class="cantItem" type="number" min="1" max="50" value=1 id="input-cant-${mercaderia.mercaderiaId}">
                 
               </div>
-              </div>
-            
-          </div>
-      `;
+              </div>        
+          </div>`;
 
     place.appendChild(element);
     crearModal(mercaderia);
@@ -108,8 +105,7 @@ const crearModal = (mercaderia) => {
           <div class="modal-footer d-block">
             <div class="row justify-content-center ">
               <div class="col-6"><button  data-bs-toggle="modal"
-                data-bs-target="#modal${mercaderia.mercaderiaId}" class="btn btn-danger w-100">Cerrar</button></div>
-              
+                data-bs-target="#modal${mercaderia.mercaderiaId}" class="btn btn-danger w-100">Cerrar</button></div>      
               
               <div class="col-6"><button name="btn-mercaderia-card" id="btn-add-modal-${mercaderia.mercaderiaId}"  class="btn btn-success bg-gradient w-100">Agregar al pedido</button></div>
               </div>
@@ -156,7 +152,6 @@ const listarMercaderiaPedida = (mercaderia, cantidad) => {
        mercaderia.mercaderiaId
      }" >Cantidad: ${cantidad}</p>
      </div>
-
 
      <div class="col-4">
      <button name="remove-item-pedido" id="btn-${
