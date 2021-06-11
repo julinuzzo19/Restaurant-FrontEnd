@@ -264,7 +264,6 @@ document.addEventListener('click', async (e) => {
     let cantidad = document.getElementById(`input-cant-${itemId}`).value;
 
     let mercaderia = await getMercaderiaById(itemId);
-    console.log(mercaderia);
     agregarAPedido(mercaderia, cantidad);
   }
 
@@ -283,7 +282,7 @@ document.addEventListener('click', async (e) => {
 
     deleteMercaderiaLocalStorage(mercaderia.mercaderiaId);
 
-    actualizarTotal(-mercaderia.precio * cantidad);
+   
   }
 });
 
@@ -350,6 +349,7 @@ const SaveToLocalStorage = (mercaderia) => {
   mercaderiaLS.forEach((item) => {
     if (item.mercaderiaId === mercaderia.mercaderiaId) {
       item.cant = item.cant + mercaderia.cant;
+
       existe = true;
     }
   });
@@ -379,6 +379,7 @@ const deleteMercaderiaLocalStorage = (id) => {
   mercaderiaLS.forEach((mercaderia, index) => {
     if (mercaderia.mercaderiaId === id) {
       mercaderiaLS.splice(index, 1);
+      actualizarTotal(-mercaderia.precio * mercaderia.cant);
     }
   });
 
