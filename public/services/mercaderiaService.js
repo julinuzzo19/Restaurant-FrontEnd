@@ -119,14 +119,39 @@ const crearModal = (mercaderia) => {
 };
 
 const agregarAPedido = (mercaderia, cantidad) => {
-  SaveToLocalStorage(mercaderia);
-  
+  let cant = parseInt(cantidad);
+  const {
+    mercaderiaId,
+    nombre,
+    precio,
+    ingredientes,
+    imagen,
+    preparacion,
+    tipoMercaderia,
+    tipoMercaderiaId
+  } = mercaderia;
+
+  let mercaderiapedida = {
+    mercaderiaId,
+    nombre,
+    precio,
+    ingredientes,
+    imagen,
+    preparacion,
+    tipoMercaderia,
+    tipoMercaderiaId,
+    cant
+  };
+
+  SaveToLocalStorage(mercaderiapedida);
 };
 
 export const listarPedido = () => {
   const place = document.getElementById('ListadoPedido');
 
   let listaPedido = getMercaderiaLocalStorage();
+
+  place.innerHTML = ``;
 
   for (const mercaderia of listaPedido) {
     const element = document.createElement('div');
@@ -139,9 +164,7 @@ export const listarPedido = () => {
 
     element.innerHTML = `
      <div class="col-3 p-0">
-     <img alt="${mercaderia.nombre}" src="${
-      mercaderia.imagen
-    }" height="91px" width="80px" >
+     <img alt="${mercaderia.nombre}" src="${mercaderia.imagen}" height="91px" width="80px" >
      </div> 
      
      <div class="col-9 p-0">
@@ -153,25 +176,21 @@ export const listarPedido = () => {
     
     <div class="col-4">
      <h6>${mercaderia.tipoMercaderia}</h6>
-     <h6 class="fw-bold" >$${mercaderia.precio }</h6> 
+     <h6 class="fw-bold" >$${mercaderia.precio}</h6> 
      </div>
      <div class="col-4">
-     <p class="pedido-row-cant text-center" id="cant-${
-       mercaderia.mercaderiaId
-     }" >Cantidad: </p>
+     <p class="pedido-row-cant text-center" id="cant-${mercaderia.mercaderiaId}" >Cantidad: ${mercaderia.cant} </p>
      </div>
 
      <div class="col-4">
-     <button name="remove-item-pedido" id="btn-${
-       mercaderia.mercaderiaId
-     }" type="button" class="btn btn-danger "><i class="fas fa-trash"></i></button>
+     <button name="remove-item-pedido" id="btn-${mercaderia.mercaderiaId}" type="button" class="btn btn-danger "><i class="fas fa-trash"></i></button>
 
       </div>     
       </div> 
       </div>   
   `;
     place.appendChild(element);
-    actualizarTotal(mercaderia.precio );
+    actualizarTotal(mercaderia.precio * mercaderia.cant);
   }
 };
 
@@ -245,6 +264,7 @@ document.addEventListener('click', async (e) => {
     let cantidad = document.getElementById(`input-cant-${itemId}`).value;
 
     let mercaderia = await getMercaderiaById(itemId);
+    console.log(mercaderia);
     agregarAPedido(mercaderia, cantidad);
   }
 
@@ -260,6 +280,8 @@ document.addEventListener('click', async (e) => {
     let cantidad = document.getElementById(`input-cant-${itemId}`).value;
 
     place.removeChild(itemPedido);
+
+    deleteMercaderiaLocalStorage(mercaderia.mercaderiaId);
 
     actualizarTotal(-mercaderia.precio * cantidad);
   }
@@ -323,8 +345,17 @@ inputFilter.oninput = () => {
 
 const SaveToLocalStorage = (mercaderia) => {
   let mercaderiaLS = getMercaderiaLocalStorage();
+  let existe = false;
 
-  mercaderiaLS.push(mercaderia);
+  mercaderiaLS.forEach((item) => {
+    if (item.mercaderiaId === mercaderia.mercaderiaId) {
+      item.cant = item.cant + mercaderia.cant;
+      existe = true;
+    }
+  });
+  if (!existe) {
+    mercaderiaLS.push(mercaderia);
+  }
 
   localStorage.setItem('mercaderia', JSON.stringify(mercaderiaLS));
   listarPedido();
@@ -340,4 +371,17 @@ const getMercaderiaLocalStorage = () => {
   }
 
   return mercaderiaLS;
+};
+
+const deleteMercaderiaLocalStorage = (id) => {
+  let mercaderiaLS = getMercaderiaLocalStorage();
+
+  mercaderiaLS.forEach((mercaderia, index) => {
+    if (mercaderia.mercaderiaId === id) {
+      mercaderiaLS.splice(index, 1);
+    }
+  });
+
+  localStorage.setItem('mercaderia', JSON.stringify(mercaderiaLS));
+  listarPedido();
 };
