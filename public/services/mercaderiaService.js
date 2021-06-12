@@ -187,7 +187,7 @@ export const listarPedido = () => {
      </div>
 
      <div class="col-4">
-     <button name="remove-item-pedido" id="btn-${mercaderia.mercaderiaId}" type="button" class="btn btn-danger "><i class="fas fa-trash"></i></button>
+     <button name="remove-item-pedido" data-mercaderia-id=${mercaderia.mercaderiaId} id="btn-${mercaderia.mercaderiaId}" type="button" class="btn btn-danger "><i class="fas fa-trash"></i></button>
 
       </div>     
       </div> 
@@ -265,6 +265,7 @@ const crearComanda = (envio, mercaderia) => {
 
 document.addEventListener('click', async (e) => {
   e.stopImmediatePropagation();
+
   if (e.target.name == 'btn-mercaderia-card') {
     let itemId = e.target.id.charAt(e.target.id.length - 1);
 
@@ -275,10 +276,12 @@ document.addEventListener('click', async (e) => {
   }
 
   if (e.target.name == 'remove-item-pedido') {
-    let btnId = e.target.id;
-    let itemId = btnId.substring(4, btnId.lenght);
+    let btnItem = document.getElementById(e.target.id);
 
-    let itemPedido = document.getElementById(`${itemId}`);
+    let itemId = btnItem.dataset.mercaderiaId;
+
+    let itemPedido = document.getElementById(itemId);
+
     let place = itemPedido.parentNode;
 
     let mercaderia = await getMercaderiaById(itemId);
