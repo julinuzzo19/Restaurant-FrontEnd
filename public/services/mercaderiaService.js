@@ -233,6 +233,9 @@ const crearComanda = (envio, mercaderia) => {
           <a  href="javascript:location.reload()" class="btn btn-primary  mt-2">Volver al menú </a>
         </div>
       </div>`;
+
+        let mercaderiaLS = [];
+        localStorage.setItem('mercaderia', JSON.stringify(mercaderiaLS));
       } else {
         formCanvasOff.innerHTML = ` <div class="card text-center p-0 my-2 w-100">
       <div class="card-header bg-transparent text-danger border-0">
@@ -294,21 +297,21 @@ window.onsubmit = (event) => {
   let tipoEnvio;
   let nombreTipoEnvio;
 
-  let btnradio1 = document.getElementById('Delivery');
-  let btnradio2 = document.getElementById('Salon');
-  let btnradio3 = document.getElementById('Pedidos Ya');
+  let btnradio1 = document.getElementById('formaEntrega2');
+  let btnradio2 = document.getElementById('formaEntrega1');
+  let btnradio3 = document.getElementById('formaEntrega3');
 
   if (btnradio1.checked) {
     tipoEnvio = parseInt(btnradio1.value);
-    nombreTipoEnvio = btnradio1.id;
+    nombreTipoEnvio = btnradio1.dataset.formaEntrega;
   }
   if (btnradio2.checked) {
     tipoEnvio = parseInt(btnradio2.value);
-    nombreTipoEnvio = btnradio2.id;
+    nombreTipoEnvio = btnradio2.dataset.formaEntrega;
   }
   if (btnradio3.checked) {
     tipoEnvio = parseInt(btnradio3.value);
-    nombreTipoEnvio = btnradio3.id;
+    nombreTipoEnvio = btnradio3.dataset.formaEntrega;
   }
 
   let envio = {
