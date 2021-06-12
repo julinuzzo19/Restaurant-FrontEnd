@@ -3,9 +3,12 @@ import {URL_API_MERCADERIA, URL_API_COMANDA} from '../js/constants.js';
 let precioActual = 0;
 
 const actualizarTotal = async (precioMercaderia) => {
-  precioActual = precioActual + precioMercaderia;
   const element = document.getElementById('total');
-
+  if (precioMercaderia === undefined) {
+    precioActual = 0;
+  } else {
+    precioActual = precioActual + precioMercaderia;
+  }
   element.innerHTML = `Precio total: $${precioActual}`;
 };
 
@@ -152,6 +155,7 @@ export const listarPedido = () => {
   let listaPedido = getMercaderiaLocalStorage();
 
   place.innerHTML = ``;
+  precioActual = 0;
 
   for (const mercaderia of listaPedido) {
     const element = document.createElement('div');
@@ -276,13 +280,9 @@ document.addEventListener('click', async (e) => {
 
     let mercaderia = await getMercaderiaById(itemId);
 
-    let cantidad = document.getElementById(`input-cant-${itemId}`).value;
-
     place.removeChild(itemPedido);
 
     deleteMercaderiaLocalStorage(mercaderia.mercaderiaId);
-
-   
   }
 });
 
@@ -379,10 +379,10 @@ const deleteMercaderiaLocalStorage = (id) => {
   mercaderiaLS.forEach((mercaderia, index) => {
     if (mercaderia.mercaderiaId === id) {
       mercaderiaLS.splice(index, 1);
-      actualizarTotal(-mercaderia.precio * mercaderia.cant);
     }
   });
 
   localStorage.setItem('mercaderia', JSON.stringify(mercaderiaLS));
+  actualizarTotal();
   listarPedido();
 };
