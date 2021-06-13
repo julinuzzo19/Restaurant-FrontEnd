@@ -183,7 +183,7 @@ export const listarPedido = () => {
      <h6 class="fw-bold" >$${mercaderia.precio}</h6> 
      </div>
      <div class="col-4">
-     <p class="pedido-row-cant text-center" id="cant-${mercaderia.mercaderiaId}" >Cantidad: ${mercaderia.cant} </p>
+     <p class="pedido-row-cant text-center" id="cant-${mercaderia.mercaderiaId}" >Cantidad ${mercaderia.cant} </p>
      </div>
 
      <div class="col-4">
@@ -325,13 +325,14 @@ window.onsubmit = (event) => {
     nombreTipo: nombreTipoEnvio
   };
 
+  let listaMercaderiaPedida = getMercaderiaLocalStorage();
   let listaPedidos = [];
-  const place = document.getElementById('ListadoPedido');
-  place.childNodes.forEach((element) => {
-    let cantidad = document.getElementById(`input-cant-${element.id}`).value;
+
+  listaMercaderiaPedida.forEach((element) => {
+    let cantidad = element.cant;
 
     for (let index = 0; index < cantidad; index++) {
-      listaPedidos.push(parseInt(element.id));
+      listaPedidos.push(parseInt(element.mercaderiaId));
     }
   });
 
