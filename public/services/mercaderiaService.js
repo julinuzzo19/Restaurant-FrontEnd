@@ -212,6 +212,13 @@ const agregarAPedido = (mercaderia, cantidad) => {
   };
 
   SaveToLocalStorage(mercaderiapedida);
+
+  // Ejecuto toast add to cart
+  document.getElementById('ToastAddToCart').className += 'show';
+
+  setTimeout(() => {
+    document.getElementById('ToastAddToCart').className = 'hide';
+  }, 1000);
 };
 
 export const listarPedido = () => {
