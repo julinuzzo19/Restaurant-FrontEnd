@@ -1,7 +1,6 @@
 nav {
   height: 66px;
 }
-
 .active {
   border-bottom: 2px solid white;
 }
@@ -36,7 +35,6 @@ nav {
 #btn-compra {
   width: 200px !important;
 }
-
 .navbar-brand {
   font-size: x-large;
 }
@@ -75,12 +73,10 @@ label[name='btn-tipo'] {
   margin-bottom: 10px;
   margin-left: 39px;
 }
-
 .nombre-pedido {
   font-size: 18px;
   font-weight: bold;
 }
-
 .cantItem {
   width: 33px;
   height: 30px;
@@ -94,7 +90,10 @@ input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
+.btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
 input[type='number'] {
   -moz-appearance: textfield;
 }
