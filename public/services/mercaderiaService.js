@@ -114,14 +114,12 @@ const mostrarMercaderias = (mercaderias) => {
     );
 
     btnLess.onclick = (e) => {
-      e.stopImmediatePropagation();
       if (cantidadInput.value > 1) {
         cantidadInput.value--;
       }
     };
 
     btnAdd.onclick = (e) => {
-      e.stopImmediatePropagation();
       if (!(cantidadInput.value >= 50)) {
         cantidadInput.value++;
       }
@@ -214,7 +212,6 @@ const agregarAPedido = (mercaderia, cantidad) => {
   SaveToLocalStorage(mercaderiapedida);
 
   // Ejecuto toast add to cart
-
   let toast = document.getElementsByClassName('toast');
 
   toast[0].classList.replace('hide', 'show');
