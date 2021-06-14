@@ -76,7 +76,7 @@ const mostrarMercaderias = (mercaderias) => {
                   </div>
                   <div class="col-5 p-0 mt-1">
                     <div class="col-3 d-inline-block">
-                      <button type="button" class="btn btn-secondary  btn-sm"><i class="fas fa-minus"></i></button>
+                      <button id="btn-less-cant-${mercaderia.mercaderiaId}" type="button" class="btn btn-secondary btn-sm"><i class="fas fa-minus"></i></button>
                     </div>
           
                     <div class="col-3 d-inline-block">
@@ -91,7 +91,7 @@ const mostrarMercaderias = (mercaderias) => {
                     </div>
           
                     <div class="col-3 d-inline-block ">
-                      <button type="button" class="btn btn-secondary btn-sm btn-add-cant"><i class="fas fa-plus"></i></button>
+                      <button id="btn-add-cant-${mercaderia.mercaderiaId}" type="button" class="btn btn-secondary btn-sm "><i class="fas fa-plus"></i></button>
                     </div>
                   </div>
                 </div>
@@ -99,8 +99,33 @@ const mostrarMercaderias = (mercaderias) => {
           </div>`;
 
     place.appendChild(element);
-
     crearModal(mercaderia);
+
+    const btnAdd = document.getElementById(
+      `btn-add-cant-${mercaderia.mercaderiaId}`
+    );
+
+    const btnLess = document.getElementById(
+      `btn-less-cant-${mercaderia.mercaderiaId}`
+    );
+
+    const cantidadInput = document.getElementById(
+      `input-cant-${mercaderia.mercaderiaId}`
+    );
+
+    btnLess.onclick = (e) => {
+      e.stopImmediatePropagation();
+      if (cantidadInput.value > 1) {
+        cantidadInput.value--;
+      }
+    };
+
+    btnAdd.onclick = (e) => {
+      e.stopImmediatePropagation();
+      if (!(cantidadInput.value >= 50)) {
+        cantidadInput.value++;
+      }
+    };
   }
 };
 
