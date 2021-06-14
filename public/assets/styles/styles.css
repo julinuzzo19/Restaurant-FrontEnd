@@ -1,9 +1,7 @@
 nav {
   height: 66px;
 }
-.nav-item {
-  margin-left: 200px;
-}
+
 .active {
   border-bottom: 2px solid white;
 }
@@ -24,8 +22,9 @@ nav {
   height: 55px;
 }
 .btn-footer-card {
-  margin-bottom: 22px;
+  margin-left: 25px;
 }
+
 #img-modal {
   width: 430px;
   height: 200px;
@@ -37,9 +36,7 @@ nav {
 #btn-compra {
   width: 200px !important;
 }
-.nav-item-comanda {
-  margin-right: 245px;
-}
+
 .navbar-brand {
   font-size: x-large;
 }
@@ -47,8 +44,16 @@ nav {
   margin-left: 20px;
   font-size: larger;
 }
+
+.nav-item-comanda {
+  margin-right: 245px;
+}
+.nav-item-menu {
+  margin-right: 245px;
+  margin-left: 190px;
+}
 #nav-item-carrito {
-  margin-left: -23px !important;
+  margin-left: 130px;
 }
 #btn-carrito-icon {
   margin-left: 15px !important;
@@ -70,16 +75,37 @@ label[name='btn-tipo'] {
   margin-bottom: 10px;
   margin-left: 39px;
 }
-.cantItem {
-  width: 35px;
-  height: 25px;
-  margin-right: 10px;
-}
+
 .nombre-pedido {
   font-size: 18px;
   font-weight: bold;
 }
 
+.cantItem {
+  width: 30px;
+  height: 30px;
+  border: 0;
+}
+input[type='number' i] {
+  padding: 3px 10px;
+}
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+input[type='number']:hover,
+input[type='number']:focus {
+  -moz-appearance: number-input;
+}
+.btn-sm {
+  margin-bottom: 4px;
+  border-radius: 0 !important;
+}
 /* Accordion Styles */
 
 .accordion-button {

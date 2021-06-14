@@ -63,16 +63,39 @@ const mostrarMercaderias = (mercaderias) => {
               <p class="card-text mt-2">${mercaderia.tipoMercaderia}</p>
               <h4 class="precio">$${mercaderia.precio}</h4>
               </div>
-              <div class="card-footer pt-0">
-              <div class="col-6 d-inline-block ">
-                <a name="btn-mercaderia-card" data-mercaderia-id="${mercaderia.mercaderiaId}" id="btn-card-${mercaderia.mercaderiaId}" class="btn btn-success bg-gradient btn-footer-card">Agregar</a>           
-              </div>
-              <div class="col-5 d-inline-block text-end div-footer-cant">
-              <label class="fw-light label-input-card">Cantidad</label>
-              <input class="cantItem" type="number" min="1" max="50" value=1 id="input-cant-${mercaderia.mercaderiaId}">
-                
-              </div>
-              </div>        
+              <div class="card-footer  p-0">
+                <div class="row pt-2">
+                  <div class="col-6 d-inline-block p-0">
+                    <a
+                      name="btn-mercaderia-card"
+                      data-mercaderia-id="${mercaderia.mercaderiaId}"
+                      id="btn-card-${mercaderia.mercaderiaId}"
+                      class="btn btn-success bg-gradient btn-footer-card"
+                      >Agregar</a
+                    >
+                  </div>
+                  <div class="col-5 p-0 mt-1">
+                    <div class="col-3 d-inline-block">
+                      <button type="button" class="btn btn-secondary  btn-sm"><i class="fas fa-minus"></i></button>
+                    </div>
+          
+                    <div class="col-3 d-inline-block">
+                      <input
+                        class="cantItem"
+                        type="number"
+                        min="1"
+                        max="50"
+                        value="1"
+                        id="input-cant-${mercaderia.mercaderiaId}"
+                      />
+                    </div>
+          
+                    <div class="col-3 d-inline-block ">
+                      <button type="button" class="btn btn-secondary btn-sm btn-add-cant"><i class="fas fa-plus"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>      
           </div>`;
 
     place.appendChild(element);
