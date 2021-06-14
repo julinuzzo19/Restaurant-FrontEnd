@@ -214,11 +214,14 @@ const agregarAPedido = (mercaderia, cantidad) => {
   SaveToLocalStorage(mercaderiapedida);
 
   // Ejecuto toast add to cart
-  document.getElementById('ToastAddToCart').className += 'show';
+
+  let toast = document.getElementsByClassName('toast');
+
+  toast[0].classList.replace('hide', 'show');
 
   setTimeout(() => {
-    document.getElementById('ToastAddToCart').className = 'hide';
-  }, 1000);
+    toast[0].classList.replace('show', 'hide');
+  }, 3000);
 };
 
 export const listarPedido = () => {
