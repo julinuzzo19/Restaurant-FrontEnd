@@ -330,7 +330,7 @@ const crearComanda = (envio, mercaderia) => {
           <p>Partido: ${envio.partido}</p>
           <p>Telefono: ${envio.telefono}</p>
           <p>Forma de envio: ${envio.nombreTipo}</p>
-          <a  href="javascript:location.reload()" class="btn btn-primary  mt-2">Volver al menú </a>
+          <a  href="javascript:location.reload()" class="btn btn-success  mt-2">Volver al menú </a>
         </div>
       </div>`;
 
